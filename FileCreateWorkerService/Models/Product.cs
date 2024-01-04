@@ -1,37 +1,135 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FileCreateWorkerService.Models
+namespace FileCreateWorkerService.Models;
+
+/// <summary>
+/// Products sold or used in the manfacturing of sold products.
+/// </summary>
+public partial class Product
 {
-    public class Product
-    {
-        public int ProductId { get; set; }
-        public string Name { get; set; }
-        public string ProductNumber { get; set; }
-        public bool? MakeFlag { get; set; }
-        public bool? FinishedGoodsFlag { get; set; }
-        public string Color { get; set; }
-        public short SafetyStockLevel { get; set; }
-        public short ReorderPoint { get; set; }
-        public decimal StandardCost { get; set; }
-        public decimal ListPrice { get; set; }
-        public string Size { get; set; }
-        public string SizeUnitMeasureCode { get; set; }
-        public string WeightUnitMeasureCode { get; set; }
-        public decimal? Weight { get; set; }
-        public int DaysToManufacture { get; set; }
-        public string ProductLine { get; set; }
-        public string Class { get; set; }
-        public string Style { get; set; }
-        public int? ProductSubcategoryId { get; set; }
-        public int? ProductModelId { get; set; }
-        public DateTime SellStartDate { get; set; }
-        public DateTime? SellEndDate { get; set; }
-        public DateTime? DiscontinuedDate { get; set; }
-        public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
-    }
+    /// <summary>
+    /// Primary key for Product records.
+    /// </summary>
+    public int ProductId { get; set; }
+
+    /// <summary>
+    /// Name of the product.
+    /// </summary>
+    public string Name { get; set; } = null!;
+
+    /// <summary>
+    /// Unique product identification number.
+    /// </summary>
+    public string ProductNumber { get; set; } = null!;
+
+    /// <summary>
+    /// 0 = Product is purchased, 1 = Product is manufactured in-house.
+    /// </summary>
+    public bool MakeFlag { get; set; }
+
+    /// <summary>
+    /// 0 = Product is not a salable item. 1 = Product is salable.
+    /// </summary>
+    public bool FinishedGoodsFlag { get; set; }
+
+    /// <summary>
+    /// Product color.
+    /// </summary>
+    public string? Color { get; set; }
+
+    /// <summary>
+    /// Minimum inventory quantity. 
+    /// </summary>
+    public short SafetyStockLevel { get; set; }
+
+    /// <summary>
+    /// Inventory level that triggers a purchase order or work order. 
+    /// </summary>
+    public short ReorderPoint { get; set; }
+
+    /// <summary>
+    /// Standard cost of the product.
+    /// </summary>
+    public decimal StandardCost { get; set; }
+
+    /// <summary>
+    /// Selling price.
+    /// </summary>
+    public decimal ListPrice { get; set; }
+
+    /// <summary>
+    /// Product size.
+    /// </summary>
+    public string? Size { get; set; }
+
+    /// <summary>
+    /// Unit of measure for Size column.
+    /// </summary>
+    public string? SizeUnitMeasureCode { get; set; }
+
+    /// <summary>
+    /// Unit of measure for Weight column.
+    /// </summary>
+    public string? WeightUnitMeasureCode { get; set; }
+
+    /// <summary>
+    /// Product weight.
+    /// </summary>
+    public decimal? Weight { get; set; }
+
+    /// <summary>
+    /// Number of days required to manufacture the product.
+    /// </summary>
+    public int DaysToManufacture { get; set; }
+
+    /// <summary>
+    /// R = Road, M = Mountain, T = Touring, S = Standard
+    /// </summary>
+    public string? ProductLine { get; set; }
+
+    /// <summary>
+    /// H = High, M = Medium, L = Low
+    /// </summary>
+    public string? Class { get; set; }
+
+    /// <summary>
+    /// W = Womens, M = Mens, U = Universal
+    /// </summary>
+    public string? Style { get; set; }
+
+    /// <summary>
+    /// Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. 
+    /// </summary>
+    public int? ProductSubcategoryId { get; set; }
+
+    /// <summary>
+    /// Product is a member of this product model. Foreign key to ProductModel.ProductModelID.
+    /// </summary>
+    public int? ProductModelId { get; set; }
+
+    /// <summary>
+    /// Date the product was available for sale.
+    /// </summary>
+    public DateTime SellStartDate { get; set; }
+
+    /// <summary>
+    /// Date the product was no longer available for sale.
+    /// </summary>
+    public DateTime? SellEndDate { get; set; }
+
+    /// <summary>
+    /// Date the product was discontinued.
+    /// </summary>
+    public DateTime? DiscontinuedDate { get; set; }
+
+    /// <summary>
+    /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+    /// </summary>
+    public Guid Rowguid { get; set; }
+
+    /// <summary>
+    /// Date and time the record was last updated.
+    /// </summary>
+    public DateTime ModifiedDate { get; set; }
 }

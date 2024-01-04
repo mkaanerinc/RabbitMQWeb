@@ -13,7 +13,7 @@ builder.Services.AddSingleton(sp => new ConnectionFactory()
     DispatchConsumersAsync = true,
 });
 
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<AdventureWorks2019Context>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("UseSqlServer"));
 });

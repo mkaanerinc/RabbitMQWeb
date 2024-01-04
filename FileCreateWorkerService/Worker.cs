@@ -39,6 +39,8 @@ namespace FileCreateWorkerService
             
             var consumer = new AsyncEventingBasicConsumer(_channel);
 
+            _channel.BasicConsume(RabbitMQClientService.QueueName,false,consumer);
+
             consumer.Received += Consumer_Received; ;
 
             return Task.CompletedTask;
@@ -85,7 +87,7 @@ namespace FileCreateWorkerService
 
             using (var scope = _serviceProvider.CreateScope())
             {
-                var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                var context = scope.ServiceProvider.GetRequiredService<AdventureWorks2019Context>();
 
                 products = context.Products.ToList();
             }
